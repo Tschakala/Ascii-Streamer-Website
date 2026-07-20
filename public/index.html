@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art Generator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <main class="card">
+            <div class="header">
+                <h1>ASCII Art Generator</h1>
+                <p>Wähle ein Bild und erzeuge verschiedene ASCII-Art-Ausgaben.</p>
+            </div>
+
+            <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="field">
+                    <label for="file">Datei auswählen</label>
+                    <input type="file" id="file" name="file" accept="image/*,video/*" required>
+                </div>
+
+                <div class="field radio-group">
+                    <span>Input-Typ</span>
+                    <label><input type="radio" name="uploadType" value="image" checked> Bild</label>
+                    <label><input type="radio" name="uploadType" value="video"> Video</label>
+                </div>
+
+                <div class="field">
+                    <label for="style">ASCII-Stil</label>
+                    <select id="style" name="style">
+                        <option value="standard">Standard</option>
+                        <option value="inverted">Invertiert</option>
+                        <option value="blocks">Detailliert</option>
+                        <option value="simple">Block</option>
+                    </select>
+                </div>
+
+                <div class="field radio-group">
+                    <span>Ausgabe-Modus</span>
+                    <label><input type="radio" name="outputMode" value="mono" checked> Mono</label>
+                    <label><input type="radio" name="outputMode" value="color"> Color</label>
+                </div>
+
+                <div class="field checkbox-field">
+                    <label><input type="checkbox" name="hashOnly"> Nur # Zeichen (nur Color-Modus)</label>
+                </div>
+
+                <div class="field">
+                    <label for="scale">Skalierung (Pixel pro Zeichen)</label>
+                    <input type="number" id="scale" name="scale" min="1" max="200" value="8">
+                </div>
+
+                <div class="field" id="fps-field">
+                    <label for="fps">Frame-Rate (FPS) bei Video</label>
+                    <input type="number" id="fps" name="fps" min="1" max="60" value="3">
+                </div>
+
+                <button class="btn" type="submit">ASCII erzeugen</button>
+            </form>
+        </main>
+    </div>
+    <script src="/theme-toggle.js" defer></script>
+    <script src="/video-ascii.js" defer></script>
+</body>
+</html>
